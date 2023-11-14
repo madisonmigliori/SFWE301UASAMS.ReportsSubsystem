@@ -287,6 +287,9 @@ public class ScholarshipReports {
                // writer.append(String.valueOf(data[0]));
                // writer.append(splitBy);
 
+
+               // sample for csv congrats letter
+               
                String sconame = "HaHa Scholarship";
                String namename = "Sue Kwon";
                int winwin = 8000;

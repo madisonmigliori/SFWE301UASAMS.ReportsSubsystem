@@ -1,14 +1,9 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
-import java.io.InvalidObjectException;
 import java.io.PrintWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Scanner;
-import java.awt.*;
 
 public class DonorReport {
     private Donor[] donor = new Donor[100];
@@ -22,17 +17,17 @@ public class DonorReport {
 
        try {
             // read csv file
-            FileReader fr = new FileReader("Report Formatting - Donor Financials Report.csv"); 
-            BufferedReader br = new BufferedReader(fr);
-            br.readLine(); // Don't process header
+            BufferedReader br = new BufferedReader(new FileReader("Report Formatting - Donor Financials Report.csv"));
+
+            br.readLine(); // don't process header
  
             while ((lineString = br.readLine()) != null) {
                 donorInfo = lineString.split(delimiter);
                 donor[i] = new Donor(donorInfo);
                 i++;
             }
-            numDonors = i + 1;
-            fr.close();
+            numDonors = i;
+            br.close();
         }
 
         catch (IOException e) {
@@ -47,34 +42,52 @@ public class DonorReport {
             int i = 0;
             Boolean printDonorName = true;
             Boolean printScholarshipName = true;
-            Boolean printCloseDate = true;
+            Boolean printStatus = true;
             Boolean printAwardeeName = true;
             Boolean printRemainingFunds = true;
-            Date currentDate = new Date();
 
             printDonorName = determinePrintCategory("donor name");
             printScholarshipName = determinePrintCategory("scholarship name");
-            printCloseDate = determinePrintCategory("close date");
+            printStatus = determinePrintCategory("status");
             printAwardeeName = determinePrintCategory("awardee name");
             printRemainingFunds = determinePrintCategory("remaining funds");
 
+            // print headers
+            if (printDonorName) {
+                pw.print("Donor Name,");
+            }
+            if (printScholarshipName) {
+                pw.print("Scholarship Name,");
+            }
+            if (printStatus) {
+                pw.print("Status,");
+            }
+            if (printAwardeeName) {
+                pw.print("Awardee Name,");
+            }
+            if (printRemainingFunds) {
+                pw.print("Remaining Funds");
+            }
+            pw.println();
+            
             for (i = 0; i < numDonors; i++) {
-                if (currentDate.before(donor[i].getCloseDate())) {
+                if (donor[i].getStatus() == true) {
                     if (printDonorName) {
-                        pw.println(donor[i].getDonorName());
+                        pw.print(donor[i].getDonorName() + ",");
                     }
                     if (printScholarshipName) {
-                        pw.println(donor[i].getScholarshipName());
+                        pw.print(donor[i].getScholarshipName() + ",");
                     }
-                    if (printCloseDate) {
-                        pw.println(donor[i].getCloseDate());
+                    if (printStatus) {
+                        pw.print(donor[i].getStatus() + ",");
                     }
                     if (printAwardeeName) {
-                        pw.println(donor[i].getAwardeeName());
+                        pw.print(donor[i].getAwardeeName() + ",");
                     }
                     if (printRemainingFunds) {
-                        pw.println(donor[i].getRemainingFunds());
+                        pw.print(donor[i].getRemainingFunds() + ",");
                     }
+                    pw.println();
                 }
             }
             pw.close();
@@ -89,19 +102,14 @@ public class DonorReport {
         Scanner scnr = new Scanner(System.in);
         char yesOrNo = ' ';
 
-        try {
-          System.out.println("Include " + categoryName + "? (y or n)");
-          yesOrNo = scnr.next().charAt(0);
-          
-          if (yesOrNo == 'y') {
-              return true;
-          }
-          else {
-              return false;
-          }
+        System.out.println("Include " + categoryName + "? (y or n)");
+        yesOrNo = scnr.next().charAt(0);
+        
+        if (yesOrNo == 'y') {
+            return true;
         }
-        finally {
-          scnr.close();
+        else {
+            return false;
         }
     }
 }

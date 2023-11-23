@@ -34,8 +34,8 @@ public class Student {
         tranStu = student[11];
         unitComp = Integer.parseInt(student[12]);
         race = student[13];
-        LGBT = student[14];
-        ethnicity = student[15];
+        ethnicity = student[14];
+        LGBT = student[15];
         military = student[16];
         disability = student[17];
         citizenship = student[18];
@@ -149,7 +149,7 @@ public class Student {
         return ethnicity;
     }
 
-    public void setUnitComp(String ethnicity) {
+    public void setEthnicity(String ethnicity) {
         this.ethnicity = ethnicity;
     }
 

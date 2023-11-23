@@ -1,26 +1,20 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.io.IOException;
-
 public class Donor {
     private String donorName;
     private String scholarshipName;
-    private Date closeDate;
+    private Boolean status;
     private String awardeeName;
     private int remainingFunds;
 
     public Donor(String[] donorInfo) {
         this.donorName = donorInfo[0];
         this.scholarshipName = donorInfo[1];
-        
-        // set date
-        try {
-          SimpleDateFormat format = new SimpleDateFormat("MM/dd/yy");
-          this.closeDate = format.parse(donorInfo[2]);
+
+        // status
+        if (donorInfo[2].equals("Open")) {
+            this.status = true;
         }
-        catch(ParseException e) {
-          System.out.println(e.getMessage());
+        else {
+            this.status = false;
         }
       
         this.awardeeName = donorInfo[3];
@@ -43,12 +37,12 @@ public class Donor {
         return scholarshipName;
     }
 
-    public void setCloseDate(Date closeDate) {
-        this.closeDate = closeDate;
+    public void setStatus(Boolean status) {
+        this.status = status;
     }
 
-    public Date getCloseDate() {
-        return closeDate;
+    public Boolean getStatus() {
+        return status;
     }
 
     public void setAwardeeName(String awardeeName) {

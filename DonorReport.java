@@ -17,7 +17,7 @@ public class DonorReport {
 
        try {
             // read csv file
-            BufferedReader br = new BufferedReader(new FileReader("Report Formatting - Donor Financials Report.csv"));
+            BufferedReader br = new BufferedReader(new FileReader("Report Formatting - Scholarship Report.csv"));
 
             br.readLine(); // don't process header
  
@@ -43,14 +43,12 @@ public class DonorReport {
             Boolean printDonorName = true;
             Boolean printScholarshipName = true;
             Boolean printStatus = true;
-            Boolean printAwardeeName = true;
-            Boolean printRemainingFunds = true;
+            Boolean printScholarshipAmount = true;
 
             printDonorName = determinePrintCategory("donor name");
             printScholarshipName = determinePrintCategory("scholarship name");
             printStatus = determinePrintCategory("status");
-            printAwardeeName = determinePrintCategory("awardee name");
-            printRemainingFunds = determinePrintCategory("remaining funds");
+            printScholarshipAmount = determinePrintCategory("scholarship amount");
 
             // print headers
             if (printDonorName) {
@@ -62,11 +60,8 @@ public class DonorReport {
             if (printStatus) {
                 pw.print("Status,");
             }
-            if (printAwardeeName) {
-                pw.print("Awardee Name,");
-            }
-            if (printRemainingFunds) {
-                pw.print("Remaining Funds");
+            if (printScholarshipAmount) {
+                pw.print("Scholarship Amount");
             }
             pw.println();
             
@@ -81,11 +76,8 @@ public class DonorReport {
                     if (printStatus) {
                         pw.print(donor[i].getStatus() + ",");
                     }
-                    if (printAwardeeName) {
-                        pw.print(donor[i].getAwardeeName() + ",");
-                    }
-                    if (printRemainingFunds) {
-                        pw.print(donor[i].getRemainingFunds() + ",");
+                    if (printScholarshipAmount) {
+                        pw.print(donor[i].getScholarshipAmount() + ",");
                     }
                     pw.println();
                 }

@@ -13,8 +13,6 @@ public class AwardDisbursementReport {
     private List<String> awardMessages = new ArrayList<String>();
     private Boolean includeBool[] = {true, true, true, true};
 
-    private static Charset UTF8 = Charset.forName("UTF-8");
-
     public void readIn(String fileName){
         int i;
 
@@ -265,7 +263,7 @@ public class AwardDisbursementReport {
 
         try {
 
-            for(i = 0; i < lastNames.size(); ++i){
+            for(i = 0; i < lastNames.size() + 1; ++i){
                 j = 0;
                 if(includeBool[0] == true){
                     if(i == 0) {
@@ -376,19 +374,3 @@ public class AwardDisbursementReport {
     }
 
 
-
-
-    public void testingOutput(){
-        int i;
-        for(i = 0; i < lastNames.size(); ++i){
-            System.out.println(months.get(i));
-            System.out.println(days.get(i));
-            System.out.println(years.get(i));
-            //System.out.println(scholarshipNames.get(i));
-            //System.out.println(firstNames.get(i));
-            //System.out.println(lastNames.get(i));
-            //System.out.println(awardAmounts.get(i));
-            //System.out.println(awardMessages.get(i));
-        }
-    }
-}

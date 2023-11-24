@@ -13,6 +13,8 @@ public class AwardDisbursementReport {
     private List<String> awardMessages = new ArrayList<String>();
     private Boolean includeBool[] = {true, true, true, true};
 
+    private static Charset UTF8 = Charset.forName("UTF-8");
+
     public void readIn(String fileName){
         int i;
 
@@ -44,7 +46,6 @@ public class AwardDisbursementReport {
                             break;
                         case 4:
                             String[] tempDate = row[i].split("/");
-
                             months.add(Integer.valueOf(tempDate[0]));
                             days.add(Integer.valueOf(tempDate[1]));
                             years.add(Integer.valueOf(tempDate[2]));
@@ -57,7 +58,6 @@ public class AwardDisbursementReport {
                             break;
                             
                     }
-
                 }
                 
             }
@@ -74,21 +74,8 @@ public class AwardDisbursementReport {
             }
         }
         
-        /*  Testing Correct Data Read In
-        for(i = 0; i < j; ++i){
-            System.out.println(monthList.get(i));
-            System.out.println(dayList.get(i));
-            System.out.println(yearList.get(i));
-            System.out.println(scholarshipNameList.get(i));
-            System.out.println(firstNameList.get(i));
-            System.out.println(lastNameList.get(i));
-            System.out.println(awardAmountList.get(i));
-            System.out.println(awardMessageList.get(i));
-        }
-        */
     }
-
-
+    
     public void swap(int index1, int index2) {
         String tempScholarshipName = scholarshipNames.get(index1);
         String tempLastName = lastNames.get(index1);
@@ -98,7 +85,6 @@ public class AwardDisbursementReport {
         int tempYear = years.get(index1);
         double tempAwardAmount = awardAmounts.get(index1);
        
-
         scholarshipNames.set(index1, scholarshipNames.get(index2));
         lastNames.set(index1, lastNames.get(index2));
         firstNames.set(index1, firstNames.get(index2));
@@ -107,7 +93,6 @@ public class AwardDisbursementReport {
         years.set(index1, years.get(index2));
         awardAmounts.set(index1, awardAmounts.get(index2));
         
-
         scholarshipNames.set(index2, tempScholarshipName);
         lastNames.set(index2, tempLastName);
         firstNames.set(index2, tempFirstName);
@@ -115,17 +100,15 @@ public class AwardDisbursementReport {
         days.set(index2, tempDay);
         years.set(index2, tempYear);
         awardAmounts.set(index2, tempAwardAmount);
-
     }
-
-
+    
     public void filterList() {
         Scanner scnr = new Scanner(System.in);
         int i;
         int j;
-        String userInputString;
+        Boolean loopAgain = true;
+        
         int userInput;
-
         System.out.println("What would you like to sort by:");
         System.out.println("0: No filter");
         System.out.println("1: Last Name Alphabetized A-Z");
@@ -137,7 +120,6 @@ public class AwardDisbursementReport {
         System.out.println("7: Date Awarded: Earliest-Latest");
         System.out.println("8: Date Awarded Latest-Earliest");
         userInput = Integer.valueOf(scnr.next());
-
         // 1 Alphabetical Last Name A-Z
         // 2 Alphabetical Last Name Z-A
         // 3 Alphabetical Scholarship Name A-Z
@@ -146,7 +128,6 @@ public class AwardDisbursementReport {
         // 6 Award Amount Low to High
         // 7 Date Awarded earliest to latest
         // 8 Date Awarded latest to earliest
-
         switch(userInput){
             case 1:
                 for(i = 1; i < lastNames.size(); ++i){
@@ -204,63 +185,86 @@ public class AwardDisbursementReport {
                 break;
             case 7:
                 for(i = 1; i < lastNames.size(); ++i){
+                    System.out.println("Test 1");
+                    loopAgain = true;
                     j = i;
-                    while(j > 0 && (years.get(j) <= years.get(j - 1))){
-                        if(years.get(j) == years.get(j - 1)){
-                            if(months.get(j) == months.get(j - 1)){
-                                if(days.get(j) < days.get(j-1)){
+                    while (j > 0 && loopAgain == true) {
+                        if (years.get(j) == years.get(j - 1)) {
+                            if (months.get(j) == months.get(j - 1)) {
+                                if(days.get(j) < days.get(j - 1)) {
                                     swap(j, j-1);
-                                    --j;
+                                    loopAgain = true;
+                                }
+                                else{
+                                    loopAgain = false;
                                 }
                             }
-                            else if (months.get(j) < months.get(j - 1) ){
+                            else if(months.get(j) < months.get(j - 1)){
                                 swap(j, j - 1);
-                                --j;
+                                loopAgain = true;
+                            }
+                            else {
+                                loopAgain = false;
                             }
                         }
-                        else if (years.get(j) < years.get(j - 1)){
-                            swap(j, j-1);
-                            --j;
+                        else if(years.get(j) < years.get(j - 1)){
+                            swap(j, j - 1);
+                            loopAgain = true;
                         }
+                        else {
+                            loopAgain = false;
+                        }
+                        --j;
                     }
                 }
                 break;
             case 8:
                 for(i = 1; i < lastNames.size(); ++i){
+                    System.out.println("Test 1");
+                    loopAgain = true;
                     j = i;
-                    while(j > 0 && (years.get(j) >= years.get(j - 1))){
-                        if(years.get(j) == years.get(j - 1)){
-                            if(months.get(j) == months.get(j - 1)){
-                                if(days.get(j) > days.get(j-1)){
+                    while (j > 0 && loopAgain == true) {
+                        if (years.get(j) == years.get(j - 1)) {
+                            if (months.get(j) == months.get(j - 1)) {
+                                if(days.get(j) > days.get(j - 1)) {
                                     swap(j, j-1);
-                                    --j;
+                                    loopAgain = true;
+                                }
+                                else{
+                                    loopAgain = false;
                                 }
                             }
-                            else if (months.get(j) > months.get(j - 1) ){
+                            else if(months.get(j) > months.get(j - 1)){
                                 swap(j, j - 1);
-                                --j;
+                                loopAgain = true;
+                            }
+                            else {
+                                loopAgain = false;
                             }
                         }
-                        else if (years.get(j) > years.get(j - 1)){
-                            swap(j, j-1);
-                            --j;
+                        else if(years.get(j) > years.get(j - 1)){
+                            swap(j, j - 1);
+                            loopAgain = true;
                         }
+                        else {
+                            loopAgain = false;
+                        }
+                        --j;
                     }
                 }
+                break;
             default:
                 break;
         }
     }
+
 
     public void writeOut() throws IOException {
         var fileOutStream = new FileOutputStream("TestOutput1.csv");
         Writer writer = new OutputStreamWriter(fileOutStream, UTF8);
         int i;
         int j;
-        int temp;
-        double numHolder;
-        int doubleInt;
-
+ 
         try {
 
             for(i = 0; i < lastNames.size() + 1; ++i){
@@ -283,7 +287,6 @@ public class AwardDisbursementReport {
                         else {
                             writer.write("\""  +lastNames.get(i - 1) + "," + firstNames.get(i - 1) + "\"");
                         }
-
                     }
                     else {
                         writer.write("Recipient");
@@ -303,7 +306,6 @@ public class AwardDisbursementReport {
                     else {
                         writer.write("Amount Awarded");
                     }
-
                 }
                 if(includeBool[3] == true) {
                     if (j > 0) {
@@ -316,7 +318,6 @@ public class AwardDisbursementReport {
                         }
                     }
                 }
-
                 writer.write("\n");
             }
         }
@@ -324,6 +325,7 @@ public class AwardDisbursementReport {
             writer.close();
         }
     }
+
 
     public void setBooleans(Scanner scnr){
         String yesOrNoString;
@@ -339,7 +341,6 @@ public class AwardDisbursementReport {
         else if(yesOrNoChar == 'n' || yesOrNoChar == 'N') {
             includeBool[0] = false;
         }
-
         System.out.println("Would you like to include the recipient's name? (y/n)");
         yesOrNoString = scnr.next();
         yesOrNoChar = yesOrNoString.charAt(0);
@@ -349,7 +350,6 @@ public class AwardDisbursementReport {
         else if(yesOrNoChar == 'n' || yesOrNoChar == 'N') {
             includeBool[1] = false;
         }
-
         System.out.println("Would you like to include the award amount? (y/n)");
         yesOrNoString = scnr.next();
         yesOrNoChar = yesOrNoString.charAt(0);
@@ -359,7 +359,6 @@ public class AwardDisbursementReport {
         else if(yesOrNoChar == 'n' || yesOrNoChar == 'N') {
             includeBool[2] = false;
         }
-
         System.out.println("Would you like to include the date when the scholarship was awarded? (y/n)");
         yesOrNoString = scnr.next();
         yesOrNoChar = yesOrNoString.charAt(0);
@@ -369,6 +368,8 @@ public class AwardDisbursementReport {
         else if(yesOrNoChar == 'n' || yesOrNoChar == 'N') {
             includeBool[3] = false;
         }
+    }
+}
 
 
     }

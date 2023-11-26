@@ -15,10 +15,11 @@ public class GUI implements ActionListener {
         //                  a report of applicants that meet scholarship requirements for a given 
         //                  scholarship.
 
-        // Create a an object of ReadInputCsvFiles to have access to its functions
+        // Create a an object to have access to its functions
         ReadInputCsvFiles applicantsData = new ReadInputCsvFiles();
         DonorReport donorData = new DonorReport();
         AwardDisbursementReport disburmentData = new AwardDisbursementReport();
+        ScholarshipReports ScholarshipReportsData = new ScholarshipReports();
 
                 
         // Additional arguments can be set to do different things.
@@ -45,7 +46,7 @@ public class GUI implements ActionListener {
         button1.setBounds(90, 50, 200, 40);
 
          // Create Button2. If pressed, Open Applicants Data GUI
-        JButton button2 = new JButton(new AbstractAction("Applicanats Report"){
+        JButton button2 = new JButton(new AbstractAction("Applicants Report"){
             @Override
             public void actionPerformed( ActionEvent e ) {
                 ReadStudentInfo applicantData = new ReadStudentInfo();
@@ -91,18 +92,10 @@ public class GUI implements ActionListener {
         button4.setBounds(90, 200, 200, 40);
 
         // Create Button5. If pressed, Sue's code will be launch
-        JButton button5 = new JButton(new AbstractAction("Sue's Code Report"){
+        JButton button5 = new JButton(new AbstractAction("Addition Scholarship Option Reports"){
             @Override
             public void actionPerformed( ActionEvent e ) {
-                ///new DonorGUI(applicantsData.scholarship, recordAmount);
-/*                try {
-                 // "SUE's CODE"
-                  
-                } catch (IOException e1) {
-                    // TODO Auto-generated catch block
-                    e1.printStackTrace();
-                }
-                */
+                ScholarshipReportsData.ScholarReport(applicantsData.scholarship, recordAmount, applicantsData.student, applicantsData.awarded);
             }
         });
         button5.setBounds(90, 250, 200, 40);
@@ -122,7 +115,7 @@ public class GUI implements ActionListener {
         f.add(button3);
         f.add(button4);
         f.add(button5);
-        f.add(button6);  
+        f.add(button6);
 
         // set the size of frame
         f.setSize(400, 400);   

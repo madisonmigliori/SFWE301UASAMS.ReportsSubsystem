@@ -121,7 +121,8 @@ public class GUI implements ActionListener {
         f.add(button2);
         f.add(button3);
         f.add(button4);
-        f.add(button5);  
+        f.add(button5);
+        f.add(button6);  
 
         // set the size of frame
         f.setSize(400, 400);   

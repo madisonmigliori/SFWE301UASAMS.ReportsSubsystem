@@ -89,15 +89,32 @@ public class GUI implements ActionListener {
             }
         });
         button4.setBounds(90, 200, 200, 40);
+
+        // Create Button5. If pressed, Sue's code will be launch
+        JButton button5 = new JButton(new AbstractAction("Sue's Code Report"){
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+                ///new DonorGUI(applicantsData.scholarship, recordAmount);
+/*                try {
+                 // "SUE's CODE"
+                  
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+                */
+            }
+        });
+        button5.setBounds(90, 250, 200, 40);
     
-        // Create Button5. Closes GUI
-        JButton button5 = new JButton(new AbstractAction("Exit"){
+        // Create Button6. Closes GUI
+        JButton button6 = new JButton(new AbstractAction("Exit"){
             @Override
             public void actionPerformed( ActionEvent e ) {
                 System.exit(0);
             }
         });
-        button5.setBounds(250, 250, 100, 50);
+        button6.setBounds(250, 300, 100, 50);
 
 
         f.add(button1);

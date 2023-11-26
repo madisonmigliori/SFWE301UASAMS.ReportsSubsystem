@@ -2,21 +2,23 @@ public class Donor {
     private String donorName;
     private String scholarshipName;
     private Boolean status;
-    private int scholarshipAmount;
+    private String awardeeName;
+    private int remainingFunds;
 
     public Donor(String[] donorInfo) {
-        this.scholarshipName = donorInfo[0];
-        this.scholarshipAmount = Integer.parseInt(donorInfo[1]);
+        this.donorName = donorInfo[0];
+        this.scholarshipName = donorInfo[1];
 
         // status
-        if (donorInfo[3].equals("Open")) {
+        if (donorInfo[2].equals("Open")) {
             this.status = true;
         }
         else {
             this.status = false;
         }
-
-        this.donorName = donorInfo[5];
+      
+        this.awardeeName = donorInfo[3];
+        this.remainingFunds = Integer.parseInt(donorInfo[4]);
     }
   
     public void setDonorName(String donorName) {
@@ -43,11 +45,19 @@ public class Donor {
         return status;
     }
 
-    public void setScholarshipAmount(int scholarshipAmount) {
-        this.scholarshipAmount = scholarshipAmount;
+    public void setAwardeeName(String awardeeName) {
+        this.awardeeName = awardeeName;
     }
 
-    public int getScholarshipAmount() {
-        return scholarshipAmount;
+    public String getAwardeeName() {
+        return awardeeName;
+    }
+
+    public void setRemainingFunds(int remainingFunds) {
+        this.remainingFunds = remainingFunds;
+    }
+
+    public int getRemainingFunds() {
+        return remainingFunds;
     }
 }

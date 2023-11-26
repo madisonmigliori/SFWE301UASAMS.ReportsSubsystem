@@ -20,6 +20,7 @@ public class ReadStudentInfo
             //Create FileWriter object
             PrintWriter pw = new PrintWriter(fileName);
             int i = 0;
+            String[] dataString;
             /*
             while (i < x[0]) {
                 pw.println("\"Applicant Name (Last,First)\"" + "," + student[i].getName());
@@ -46,12 +47,14 @@ public class ReadStudentInfo
             }
             */
             i = 1;
+            pw.print(",");
             while (i <= x[0]) {
                pw.print("Student: " + i + " ,");
                i++;
             }
             i = 0;
             pw.println();
+            pw.print("Name,");
             while (i < x[0]) {
                 
                pw.print(student[i].getName()+ ",");
@@ -59,9 +62,114 @@ public class ReadStudentInfo
            }
             i = 0;
             pw.println();
+            pw.print("IdNume,");
             while (i < x[0]) {
                 
                pw.print(student[i].getIdNum()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Graduation Month,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getGradMonth()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+                        pw.print("Graduation Year,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getGradYear()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Academic Standing,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getAcadStand()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Major,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getMajor()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Minor,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getMinor()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Field Of Interest,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getFieldIntr()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Units Complete,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getUnitComp()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Race,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getRace()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("LGBT,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getLGBT()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Ethnicity,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getEthnicity()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Military,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getMilitary()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Disability,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getDisability()+ ",");
+            i++;
+           }
+            i = 0;
+            pw.println();
+            pw.print("Citizenship,");
+            while (i < x[0]) {
+                
+               pw.print(student[i].getCitizenship()+ ",");
             i++;
            }
 

@@ -1,6 +1,7 @@
 import java.util.*;
 import java.io.*;
 import java.nio.charset.*;
+import java.text.SimpleDateFormat;
 
 public class AwardDisbursementReport {
     private List<Integer> months = new ArrayList<Integer>();
@@ -118,8 +119,7 @@ public class AwardDisbursementReport {
         System.out.println("5: Amount Awarded High-Low");
         System.out.println("6: Amount Awarded Low-High");
         System.out.println("7: Date Awarded: Earliest-Latest");
-        System.out.println("8: Date Awarded Latest-Earliest");
-        userInput = Integer.valueOf(scnr.next());
+        System.out.println("8: Date Awarded Latest-Earliest");        userInput = Integer.valueOf(scnr.next());
         // 1 Alphabetical Last Name A-Z
         // 2 Alphabetical Last Name Z-A
         // 3 Alphabetical Scholarship Name A-Z
@@ -260,7 +260,10 @@ public class AwardDisbursementReport {
 
 
     public void writeOut() throws IOException {
-        var fileOutStream = new FileOutputStream("TestOutput1.csv");
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+            
+
+        var fileOutStream = new FileOutputStream("Disbursement_" + timeStamp + ".csv");
         Writer writer = new OutputStreamWriter(fileOutStream, UTF8);
         int i;
         int j;
@@ -369,10 +372,5 @@ public class AwardDisbursementReport {
             includeBool[3] = false;
         }
     }
-}
-
-
-    }
-
 }
 

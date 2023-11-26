@@ -2,11 +2,21 @@ public class Awarded {
     private String applicantName;
     private int amount;
     private String scholarshipName;
+    private String dateAwarded;
 
     public Awarded(String[] awarded) {
-        applicantName = awarded[0] + "," + awarded[1];
-        amount = Integer.parseInt(awarded[2]);
-        scholarshipName = awarded[3];
+        scholarshipName = awarded[0];
+        applicantName = awarded[1] + "," + awarded[2];
+        amount = Integer.parseInt(awarded[3]);
+        dateAwarded = awarded[4];
+    }
+
+    public String getScholarshipName() {
+        return scholarshipName;
+    }
+
+    public void setScholarshipName(String scholarshipName) {
+        this.scholarshipName = scholarshipName;
     }
 
     public String getApplicantName() {
@@ -25,11 +35,12 @@ public class Awarded {
         this.amount = amount;
     }
 
-    public String getScholarshipName() {
-        return scholarshipName;
+        public String getDateAwarded() {
+        return dateAwarded;
     }
 
-    public void setScholarshipName(String scholarshipName) {
-        this.scholarshipName = scholarshipName;
+    public void setDateAwarded(int dateAwarded) {
+        this.amount = dateAwarded;
     }
+
 }

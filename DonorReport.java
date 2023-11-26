@@ -1,15 +1,20 @@
+import java.awt.Desktop;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.Scanner;
+//import java.util.Scanner;
 
 public class DonorReport {
-    private Donor[] donor = new Donor[100];
+    Scholarship[] donor = new Scholarship[100];
+
     private int numDonors;
   
-    public void readFile() {
+    public int readFile() {
        String lineString = "";
        String delimiter = ",";
        String[] donorInfo;
@@ -23,7 +28,7 @@ public class DonorReport {
  
             while ((lineString = br.readLine()) != null) {
                 donorInfo = lineString.split(delimiter);
-                donor[i] = new Donor(donorInfo);
+                donor[i] = new Scholarship(donorInfo);
                 i++;
             }
             numDonors = i;
@@ -33,64 +38,69 @@ public class DonorReport {
         catch (IOException e) {
             System.out.println(e.getMessage());
         }
+        return numDonors;
     }
 
-    public void generateReport() throws IOException {
+    public void generateReport(Scholarship[] donor, int numDonors) throws IOException {
         try {
-            FileWriter fw = new FileWriter ("donor report.csv");
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+            FileWriter fw = new FileWriter ("donor report" + timeStamp + ".csv");
             PrintWriter pw = new PrintWriter(fw);
             int i = 0;
-            Boolean printDonorName = true;
-            Boolean printScholarshipName = true;
-            Boolean printStatus = true;
-            Boolean printScholarshipAmount = true;
+//            Boolean printDonorName = true;
+//            Boolean printScholarshipName = true;
+//            Boolean printStatus = true;
+//            Boolean printScholarshipAmount = true;
 
-            printDonorName = determinePrintCategory("donor name");
-            printScholarshipName = determinePrintCategory("scholarship name");
-            printStatus = determinePrintCategory("status");
-            printScholarshipAmount = determinePrintCategory("scholarship amount");
+//            printDonorName = determinePrintCategory("donor name");
+//            printScholarshipName = determinePrintCategory("scholarship name");
+//            printStatus = determinePrintCategory("status");
+//            printScholarshipAmount = determinePrintCategory("scholarship amount");
 
             // print headers
-            if (printDonorName) {
+ //           if (printDonorName) {
                 pw.print("Donor Name,");
-            }
-            if (printScholarshipName) {
+ //           }
+ //           if (printScholarshipName) {
                 pw.print("Scholarship Name,");
-            }
-            if (printStatus) {
+ //           }
+ //           if (printStatus) {
                 pw.print("Status,");
-            }
-            if (printScholarshipAmount) {
+ //           }
+ //           if (printScholarshipAmount) {
                 pw.print("Scholarship Amount");
-            }
+ //           }
             pw.println();
-            
+
             for (i = 0; i < numDonors; i++) {
-                if (donor[i].getStatus() == true) {
-                    if (printDonorName) {
+                if (donor[i].getStatus().compareTo("Open") == 0) {
+ //                   if (printDonorName) {
                         pw.print(donor[i].getDonorName() + ",");
-                    }
-                    if (printScholarshipName) {
+ //                   }
+ //                   if (printScholarshipName) {
                         pw.print(donor[i].getScholarshipName() + ",");
-                    }
-                    if (printStatus) {
+ //                   }
+ //                   if (printStatus) {
                         pw.print(donor[i].getStatus() + ",");
-                    }
-                    if (printScholarshipAmount) {
-                        pw.print(donor[i].getScholarshipAmount() + ",");
-                    }
+ //                   }
+ //                   if (printScholarshipAmount) {
+                        pw.print(donor[i].getAmount());
+ //                   }
                     pw.println();
                 }
             }
             pw.close();
+            Desktop.getDesktop().open(new File("donor report" + timeStamp + ".csv"));
         }
         
         catch (IOException e) {
             System.out.println(e.getMessage());
         }
+
     }
 
-    public Boolean determinePrintCategory(String categoryName) {
+ /*   public Boolean determinePrintCategory(String categoryName) {
         Scanner scnr = new Scanner(System.in);
         char yesOrNo = ' ';
 
@@ -104,4 +114,5 @@ public class DonorReport {
             return false;
         }
     }
+    */
 }

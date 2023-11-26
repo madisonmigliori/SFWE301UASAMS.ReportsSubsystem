@@ -17,6 +17,9 @@ public class GUI implements ActionListener {
 
         // Create a an object of ReadInputCsvFiles to have access to its functions
         ReadInputCsvFiles applicantsData = new ReadInputCsvFiles();
+        DonorReport donorData = new DonorReport();
+        AwardDisbursementReport disburmentData = new AwardDisbursementReport();
+
                 
         // Additional arguments can be set to do different things.
         String [] args = {"All"};
@@ -26,7 +29,9 @@ public class GUI implements ActionListener {
         // 2) Awarded.csv                                   -> Awarded[], totalAmount[1]
         // 3) Report Fromatting - Scholarship Reports.csv   -> Scholarship[], totalAmount[2]
         int[] recordAmount = applicantsData.parseCsvInfo(args);
-        
+        int numDonor = donorData.readFile();
+        disburmentData.readIn("Awarded.csv");
+
         // create a new frame
         f = new JFrame("Report Generator");
 
@@ -40,7 +45,7 @@ public class GUI implements ActionListener {
         button1.setBounds(90, 50, 200, 40);
 
          // Create Button2. If pressed, Open Applicants Data GUI
-        JButton button2 = new JButton(new AbstractAction("Applicanats"){
+        JButton button2 = new JButton(new AbstractAction("Applicanats Report"){
             @Override
             public void actionPerformed( ActionEvent e ) {
                 ReadStudentInfo applicantData = new ReadStudentInfo();
@@ -55,27 +60,51 @@ public class GUI implements ActionListener {
         button2.setBounds(90, 100, 200, 40);
         
         // Create Button3. If pressed, Open Donor Data GUI
-        JButton button3 = new JButton(new AbstractAction("Donors"){
+        JButton button3 = new JButton(new AbstractAction("Donors Report"){
             @Override
             public void actionPerformed( ActionEvent e ) {
-                new DonorGUI(applicantsData.scholarship, recordAmount);
+                ///new DonorGUI(applicantsData.scholarship, recordAmount);
+                try {
+                    donorData.generateReport(donorData.donor, numDonor);
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
             }
         });
         button3.setBounds(90, 150, 200, 40);
 
-        // Create Button4. Closes GUI
-        JButton button4 = new JButton(new AbstractAction("Exit"){
+        // Create Button4. If pressed, Open Donor Data GUI
+        JButton button4 = new JButton(new AbstractAction("Disbursement Report"){
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+                ///new DonorGUI(applicantsData.scholarship, recordAmount);
+                try {
+                    disburmentData.filterList();
+                    disburmentData.writeOut();
+                } catch (IOException e1) {
+                    // TODO Auto-generated catch block
+                    e1.printStackTrace();
+                }
+            }
+        });
+        button4.setBounds(90, 200, 200, 40);
+    
+        // Create Button5. Closes GUI
+        JButton button5 = new JButton(new AbstractAction("Exit"){
             @Override
             public void actionPerformed( ActionEvent e ) {
                 System.exit(0);
             }
         });
-        button4.setBounds(250, 250, 100, 50);
+        button5.setBounds(250, 250, 100, 50);
+
 
         f.add(button1);
         f.add(button2);
         f.add(button3);
-        f.add(button4);   
+        f.add(button4);
+        f.add(button5);  
 
         // set the size of frame
         f.setSize(400, 400);   

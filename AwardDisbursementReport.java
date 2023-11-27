@@ -1,4 +1,5 @@
 import java.util.*;
+import java.awt.Desktop;
 import java.io.*;
 import java.nio.charset.*;
 import java.text.SimpleDateFormat;
@@ -326,6 +327,7 @@ public class AwardDisbursementReport {
         }
         finally{
             writer.close();
+            Desktop.getDesktop().open(new File("Disbursement_" + timeStamp + ".csv"));
         }
     }
 

@@ -12,17 +12,13 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 public class ScholarshipReports {
-    public void ScholarReport(Scholarship[] scholarship, int[] recordAmount, Student[] student, Awarded[] awarded) {
+    public void ScholarReport(Awarded[] awarded) {
 
         // CSV separator variables
         String line = "";
         String splitBy = ",";
         // report category choice variable
         int reportChoice = 0;
-        // specified report category choice variable
-        int ratio = 0;
-
-
 
         Scanner scanner = new Scanner(System.in);
         try {

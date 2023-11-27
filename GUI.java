@@ -92,10 +92,10 @@ public class GUI implements ActionListener {
         button4.setBounds(90, 200, 200, 40);
 
         // Create Button5. If pressed, Sue's code will be launch
-        JButton button5 = new JButton(new AbstractAction("Addition Scholarship Option Reports"){
+        JButton button5 = new JButton(new AbstractAction("Addition Scholarship Filters"){
             @Override
             public void actionPerformed( ActionEvent e ) {
-                ScholarshipReportsData.ScholarReport(applicantsData.scholarship, recordAmount, applicantsData.student, applicantsData.awarded);
+                ScholarshipReportsData.ScholarReport(applicantsData.awarded);
             }
         });
         button5.setBounds(90, 250, 200, 40);

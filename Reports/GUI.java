@@ -31,13 +31,13 @@ public class GUI implements ActionListener {
         // 3) Report Fromatting - Scholarship Reports.csv   -> Scholarship[], totalAmount[2]
         int[] recordAmount = applicantsData.parseCsvInfo(args);
         int numDonor = donorData.readFile();
-        disburmentData.readIn("Awarded.csv");
+        disburmentData.readIn("DisbursementTest.csv");
 
         // create a new frame
         f = new JFrame("Report Generator");
 
         // Create Button1. If pressed, Open Scholarships GUI
-        JButton button1 = new JButton( new AbstractAction("Scholarships") {
+        JButton button1 = new JButton( new AbstractAction("Scholarships Report") {
             @Override
             public void actionPerformed( ActionEvent e ) {
                 new ScholarshipGUI(applicantsData.scholarship, recordAmount, applicantsData.student, applicantsData.awarded);

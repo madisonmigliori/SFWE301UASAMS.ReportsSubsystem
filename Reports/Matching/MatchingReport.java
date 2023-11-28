@@ -42,6 +42,13 @@ catch (IOException e) {
     }
 }
 
+public void setDataList(List<Match> newList){
+    this.dataList = newList;
+}
+
+public List<Match> getDataList(){
+    return dataList;
+}
 /**
  * @param matches
  * @throws IOException

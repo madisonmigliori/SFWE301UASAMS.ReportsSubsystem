@@ -21,14 +21,14 @@ GitHub Changes (mm/dd/yyyy)
 ***11/26/2023***
 - Awarded.csv modified data
 - GUI.java modified for new button names and update reports called
-- Java_Files.piz created
+- Java_Files.piz created (binary)
 - ScholarshipReports.java created
 - AwardedDisbursementReport.java modified for desktop
 - GUI.java modified for new button name and update report variables
 - MainProgram.java modified for password and print functions
 - ScholarshipReports.java modified to support varibles in function called
 - Awarded.csv modified to support additional data
-- Awarded_letter_txt files (3) created
+- Awarded_letter_txt files (3) created to display samples
 
 ***11/25/2023***
 - AwardDisbusementReport.java modified for date formatting
@@ -36,16 +36,16 @@ GitHub Changes (mm/dd/yyyy)
 - Awarded.java modified to support date awarded
 - Donor.java modified to remove scholarship amount and support awardee name and remaining funds
 - DonorReport.java modified to support calendar/date formatting and adjustments to read file
-- GUI.java modified to call donor report/award disperement report and modify/add buttons
+- GUI.java modified to call donor report/award dispersement report and modify/add buttons
 - ReadStudentInfo.java modified print functions
 - donor report.csv created
 - GUI.java modified to support additional buttons
 - Test1.java created
 
 ***11/24/2023***
-- AwardDisbursmentReport.java created
-- AwardDispersmentReport.java modified to loop
-- DisbursmentTest.csv created
+- AwardDisbursementReport.java created
+- AwardDispersementReport.java modified to loop for user inuput
+- DisbursementTest.csv created
 - Match.java created
 - MatchingReport.java created
 - Report Formatting - Matching Report.csv created
@@ -59,14 +59,14 @@ GitHub Changes (mm/dd/yyyy)
 - Awarded.java created
 - DonorGUI.java created
 - GUI.java modified to support 4 buttons
-- MainPorgram.java created
+- MainProgram.java created
 - ReadInputCsvFiles.java created
 - ReadStudentInfo.java modified to read/write csv files
 - Report Formatting - Scholarship Report.csv created
 - Report Formatting.csv modified data formatting
 - Reports.java created
 - Scholarship.java created
-- ScholarshipGUY.java created
+- ScholarshipGUI.java created
 - Student.java modified to read correct data
 
 ***11/19/2023***

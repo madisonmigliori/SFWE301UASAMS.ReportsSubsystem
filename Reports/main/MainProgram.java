@@ -30,9 +30,9 @@ public class MainProgram {
         Path path1 = Paths.get("Awarded.csv");
         Path path2 = Paths.get("Report Formatting - Scholarship Report.csv");
         Path path3 = Paths.get("Report Formatting.csv");
-        Path path4 = Paths.get("Report Formatting - Matching Report.csv");
+       // Path path4 = Paths.get("Report Formatting - Matching Report.csv");
 
-        if (Files.exists(path1) && Files.exists(path2) && Files.exists(path3) && Files.exists(path4)) {
+        if (Files.exists(path1) && Files.exists(path2) && Files.exists(path3)) {
             new GUI();
         } else {
             System.out.println();
@@ -46,9 +46,9 @@ public class MainProgram {
             if (!Files.exists(path3)) {
                 System.out.println("Report Formatting.csv");
             }
-            if (!Files.exists(path4)) {
-                System.out.println("Report Formatting - Matching Report.csv");
-            }
+           // if (!Files.exists(path4)) {
+                //System.out.println("Report Formatting - Matching Report.csv");
+          //  }
             System.out.println();
         }
         sc.close();

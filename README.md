@@ -2,7 +2,7 @@
 ## UA Scholarship Application Management System (UASAMS)
 ### GitHub Changes (mm/dd/yyyy)
 
-***11/27/2023***
+##***11/27/2023***
 -
 
 ***11/26/2023***

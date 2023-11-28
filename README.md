@@ -1,6 +1,7 @@
 SFWE 301 Semester Project (F23)
 # UA Scholarship Application Management System (UASAMS)
-## GitHub Changes (mm/dd/yyyy)
+
+GitHub Changes (mm/dd/yyyy)
 
 ***11/27/2023***
 -

@@ -64,7 +64,6 @@ public class GUI implements ActionListener {
         JButton button3 = new JButton(new AbstractAction("Donors Report"){
             @Override
             public void actionPerformed( ActionEvent e ) {
-                ///new DonorGUI(applicantsData.scholarship, recordAmount);
                 try {
                     donorData.generateReport(donorData.donor, numDonor);
                 } catch (IOException e1) {
@@ -79,7 +78,6 @@ public class GUI implements ActionListener {
         JButton button4 = new JButton(new AbstractAction("Disbursement Report"){
             @Override
             public void actionPerformed( ActionEvent e ) {
-                ///new DonorGUI(applicantsData.scholarship, recordAmount);
                 try {
                     disburmentData.filterList();
                     disburmentData.writeOut();
@@ -92,22 +90,32 @@ public class GUI implements ActionListener {
         button4.setBounds(90, 200, 200, 40);
 
         // Create Button5. If pressed, Sue's code will be launch
-        JButton button5 = new JButton(new AbstractAction("Addition Scholarship Filters"){
+        JButton button5 = new JButton(new AbstractAction("Additional Scholarship Filters"){
             @Override
             public void actionPerformed( ActionEvent e ) {
                 ScholarshipReportsData.ScholarReport(applicantsData.awarded);
             }
         });
         button5.setBounds(90, 250, 200, 40);
-    
-        // Create Button6. Closes GUI
-        JButton button6 = new JButton(new AbstractAction("Exit"){
+
+        // Create Button6. If pressed, Sue's code will be launch
+        JButton button6 = new JButton(new AbstractAction("Yearly or Monthly Report"){
+            @Override
+            public void actionPerformed( ActionEvent e ) {
+                new YearlyMonthlyGUI(applicantsData.scholarship, recordAmount, applicantsData.awarded);
+            }
+        });
+
+        button6.setBounds(90, 300, 200, 40);
+
+        // Create Button7. Closes GUI
+        JButton button7 = new JButton(new AbstractAction("Exit"){
             @Override
             public void actionPerformed( ActionEvent e ) {
                 System.exit(0);
             }
         });
-        button6.setBounds(250, 300, 100, 50);
+        button7.setBounds(250, 350, 100, 50);
 
 
         f.add(button1);
@@ -116,9 +124,10 @@ public class GUI implements ActionListener {
         f.add(button4);
         f.add(button5);
         f.add(button6);
+        f.add(button7);
 
         // set the size of frame
-        f.setSize(400, 400);   
+        f.setSize(450, 450);   
         f.setLayout(null);
         f.setVisible(true);
     }

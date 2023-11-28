@@ -186,7 +186,6 @@ public class AwardDisbursementReport {
                 break;
             case 7:
                 for(i = 1; i < lastNames.size(); ++i){
-                    System.out.println("Test 1");
                     loopAgain = true;
                     j = i;
                     while (j > 0 && loopAgain == true) {
@@ -221,7 +220,6 @@ public class AwardDisbursementReport {
                 break;
             case 8:
                 for(i = 1; i < lastNames.size(); ++i){
-                    System.out.println("Test 1");
                     loopAgain = true;
                     j = i;
                     while (j > 0 && loopAgain == true) {

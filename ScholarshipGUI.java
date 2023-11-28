@@ -85,7 +85,7 @@ public class ScholarshipGUI implements ActionListener {
         f.add(btn3);
 
         //Create Button4. If pressed, Awarded Applicants
-        JButton btn4 = new JButton(new AbstractAction("Eligible Students") {
+        JButton btn4 = new JButton(new AbstractAction("Eligible Applicants") {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Reports awardedApplicants = new Reports();

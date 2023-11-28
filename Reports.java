@@ -314,6 +314,7 @@ public class Reports {
                 pw.println("You will be receiving a total amount of: $" + awarded[i].getAmount());
                 pw.println("Sincerely, ");
                 pw.println();
+                pw.println();
                 pw.println("Sharon ONeal");
                 pw.println("Dean");
                 pw.close();

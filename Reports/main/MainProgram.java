@@ -1,10 +1,11 @@
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class MainProgram {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         int numberOfAttempts = 0;
         String passwordEntered = "";
         boolean passwordValid = false;
@@ -16,7 +17,7 @@ public class MainProgram {
                 passwordValid = true;
 
             } else {
-                System.out.println(" Incorrect Passwword Entered ");
+                System.out.println(" Incorrect Password Entered ");
                 numberOfAttempts++;
                 if (numberOfAttempts > 2)
                 {
@@ -29,8 +30,9 @@ public class MainProgram {
         Path path1 = Paths.get("Awarded.csv");
         Path path2 = Paths.get("Report Formatting - Scholarship Report.csv");
         Path path3 = Paths.get("Report Formatting.csv");
+        Path path4 = Paths.get("Report Formatting - Matching Report.csv");
 
-        if (Files.exists(path1) && Files.exists(path2) && Files.exists(path3)) {
+        if (Files.exists(path1) && Files.exists(path2) && Files.exists(path3) && Files.exists(path4)) {
             new GUI();
         } else {
             System.out.println();
@@ -44,7 +46,12 @@ public class MainProgram {
             if (!Files.exists(path3)) {
                 System.out.println("Report Formatting.csv");
             }
+            if (!Files.exists(path4)) {
+                System.out.println("Report Formatting - Matching Report.csv");
+            }
             System.out.println();
         }
+        sc.close();
     }
 }
+
